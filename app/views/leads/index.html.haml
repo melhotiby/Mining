@@ -2,7 +2,7 @@
 
 %table
   %tr
-    %th Name
+    %th Title
     %th Phone
     %th
     %th
@@ -10,7 +10,7 @@
 
   - @leads.each do |lead|
     %tr
-      %td= lead.name
+      %td= lead.title
       %td= lead.phone
       %td= link_to 'Show', lead
       %td= link_to 'Edit', edit_lead_path(lead)

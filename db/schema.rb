@@ -14,10 +14,15 @@
 ActiveRecord::Schema.define(:version => 20120305162055) do
 
   create_table "leads", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "post_id"
+    t.string   "state"
+    t.string   "email"
+    t.datetime "post_date"
+    t.string   "original_url"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

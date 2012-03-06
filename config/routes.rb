@@ -1,6 +1,9 @@
 Mining::Application.routes.draw do
   resources :leads
-
+  
+  match '/lead_form' => 'leads#lead_form'
+  post '/lead_form_submit' => 'leads#lead_form_submit'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

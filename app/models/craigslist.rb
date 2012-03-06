@@ -20,13 +20,18 @@ class Craigslist
   
   def self.reply_to(url)
     reply = ""
+    post_id = false
     page = Nokogiri::HTML(open(url))
     page.css('a').each do |x|
       if x.text =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     		reply = x.text
     	end
+    	value = x.attributes['href'].value
+    	if value != "" && post_id == false
+    	 post_id = x.attributes['href'].value[/postingID=(\d+)/, 1]
+    	end
     end
-    reply
+    [reply, post_id]
   end
 
 end

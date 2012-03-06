@@ -1,0 +1,13 @@
+= form_tag '/lead_form_submit', :class => "listing_form" do
+  Name
+  %label{:for => 'name'}= text_field_tag :name
+  %br
+  State
+  %label{:for => 'state'}= select_tag :state, options_for_select(us_states.unshift("Select your State"))
+  %br
+  = submit_tag
+  
+  #loading_wrapper
+    #loading
+      %p
+        = image_tag("ajax-loader.gif")

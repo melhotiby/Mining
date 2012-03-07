@@ -1,16 +1,33 @@
-= form_for @lead do |f|
-  -if @lead.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@lead.errors.count, "error")} prohibited this lead from being saved:"
-      %ul
-        - @lead.errors.full_messages.each do |msg|
-          %li= msg
+.clearfix
+  = f.label :title, t("activerecord.attributes.lead.title", :default => "Title"), :class => :label
+  .input
+    = f.text_field :title, :class => 'text_field'
+.clearfix
+  = f.label :phone, t("activerecord.attributes.lead.phone", :default => "Phone"), :class => :label
+  .input
+    = f.text_field :phone, :class => 'text_field'
+.clearfix
+  = f.label :post_id, t("activerecord.attributes.lead.post_id", :default => "Post"), :class => :label
+  .input
+    = f.text_field :post_id, :class => 'text_field'
+.clearfix
+  = f.label :state, t("activerecord.attributes.lead.state", :default => "State"), :class => :label
+  .input
+    = f.text_field :state, :class => 'text_field'
+.clearfix
+  = f.label :email, t("activerecord.attributes.lead.email", :default => "Email"), :class => :label
+  .input
+    = f.text_field :email, :class => 'text_field'
+.clearfix
+  = f.label :post_date, t("activerecord.attributes.lead.post_date", :default => "Post date"), :class => :label
+  .input
+    = f.datetime_select :post_date, :class => 'datetime_select'
+.clearfix
+  = f.label :original_url, t("activerecord.attributes.lead.original_url", :default => "Original url"), :class => :label
+  .input
+    = f.text_field :original_url, :class => 'text_field'
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :phone
-    = f.text_field :phone
-  .actions
-    = f.submit 'Save'
+.form-actions
+  %button{:class => "btn primary", :type => "submit"} Save
+  or
+  = link_to "Cancel", leads_path

@@ -1,7 +1,3 @@
-%h1 Editing lead
-
-= render 'form'
-
-= link_to 'Show', @lead
-\|
-= link_to 'Back', leads_path
+= form_for @lead, :url => lead_path(@lead), :html => { :class => "edit_lead", :id => "edit_lead" } do |f|
+  %input{:name => "_method", :type => "hidden", :value =>"put"}
+  = render :partial => "form", :locals => {:f => f}

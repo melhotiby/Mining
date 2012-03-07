@@ -1,12 +1,19 @@
-%p#notice= notice
+%label{:class => "label"}= t("activerecord.attributes.lead.title", :default => t("activerecord.labels.title", :default => "Title")) + ":"
+%p= @lead.title
+%label{:class => "label"}= t("activerecord.attributes.lead.phone", :default => t("activerecord.labels.phone", :default => "Phone")) + ":"
+%p= @lead.phone
+%label{:class => "label"}= t("activerecord.attributes.lead.post_id", :default => t("activerecord.labels.post_id", :default => "Post")) + ":"
+%p= @lead.post_id
+%label{:class => "label"}= t("activerecord.attributes.lead.state", :default => t("activerecord.labels.state", :default => "State")) + ":"
+%p= @lead.state
+%label{:class => "label"}= t("activerecord.attributes.lead.email", :default => t("activerecord.labels.email", :default => "Email")) + ":"
+%p= @lead.email
+%label{:class => "label"}= t("activerecord.attributes.lead.post_date", :default => t("activerecord.labels.post_date", :default => "Post date")) + ":"
+%p= @lead.post_date
+%label{:class => "label"}= t("activerecord.attributes.lead.original_url", :default => t("activerecord.labels.original_url", :default => "Original url")) + ":"
+%p= @lead.original_url
 
-%p
-  %b Name:
-  = @lead.name
-%p
-  %b Phone:
-  = @lead.phone
-
-= link_to 'Edit', edit_lead_path(@lead)
-\|
-= link_to 'Back', leads_path
+.form-actions
+  = link_to "Back", leads_path, :class => 'btn'
+  = link_to "Edit", edit_lead_path(@lead), :class => 'btn'
+  = link_to "Delete", lead_path(@lead), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

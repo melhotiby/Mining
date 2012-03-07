@@ -1,21 +1,21 @@
-%h1 Listing leads
-
-%table
-  %tr
-    %th Title
-    %th Phone
-    %th
-    %th
-    %th
-
-  - @leads.each do |lead|
+%h1 Leads
+%table{:class => "table table-striped"}
+  %thead
     %tr
-      %td= lead.title
-      %td= lead.phone
-      %td= link_to 'Show', lead
-      %td= link_to 'Edit', edit_lead_path(lead)
-      %td= link_to 'Destroy', lead, :confirm => 'Are you sure?', :method => :delete
+      %th ID
+      %th
+        = t("activerecord.attributes.lead.title", :default => t("activerecord.labels.title", :default => "Title"))
+      %th Created at
+      %th Actions
+  %tbody
+    - @leads.each do |lead|
+      %tr
+        %td= lead.id
+        %td= link_to lead.title, lead_path(lead)
+        %td= lead.created_at
+        %td
+          = link_to "Show", lead_path(lead)
+          = link_to "Edit", edit_lead_path(lead)
+          = link_to "Destroy", lead_path(lead), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-%br
-
-= link_to 'New Lead', new_lead_path
+= link_to "New", new_lead_path, :class => 'btn btn-primary'

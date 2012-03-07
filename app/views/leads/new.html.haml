@@ -1,5 +1,2 @@
-%h1 New lead
-
-= render 'form'
-
-= link_to 'Back', leads_path
+= form_for @lead, :url => leads_path, :html => { :class => :form } do |f|
+  = render :partial => "form", :locals => {:f => f}

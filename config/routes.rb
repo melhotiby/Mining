@@ -1,4 +1,6 @@
 Mining::Application.routes.draw do
+  devise_for :users
+
   resources :leads
   
   match '/lead_form' => 'leads#lead_form'

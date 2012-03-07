@@ -8,8 +8,11 @@ gem "haml", "~> 3.1.4"
 gem 'mysql2'
 gem "craigler", "~> 1.3.2"
 gem 'nokogiri'
-gem "formtastic", "~> 2.1.1"
-
+gem 'simple_form'
+gem 'devise'
+gem "omniauth-facebook"
+gem "twitter-bootstrap-rails"
+gem 'country_select'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

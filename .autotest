@@ -1,0 +1,14 @@
+require 'autotest/growl'
+require 'autotest/fsevent'
+
+Autotest.add_hook :initialize do |autotest|
+  autotest.add_mapping(/^spec\/requests\/.*_spec\.rb$/) do
+    autotest.files_matching(/^spec\/requests\/.*_spec\.rb$/)
+  end  
+end
+
+Autotest.add_hook :initialize do |at|
+  unless ARGV.empty?
+    at.find_directories = ARGV.length == 1 ? ["spec/#{ARGV.first}","app/#{ARGV.first}"] : ARGV.dup
+  end
+end

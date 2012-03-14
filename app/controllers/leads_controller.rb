@@ -1,4 +1,5 @@
 class LeadsController < ApplicationController
+  before_filter :authenticate_user!
   
   def index
     @leads = Lead.all

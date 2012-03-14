@@ -2,7 +2,7 @@ class LeadsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @leads = Lead.all
+    @leads = Lead.paginate(:page => params[:page], :per_page => 40)    
   end
   
   def lead_form_submit

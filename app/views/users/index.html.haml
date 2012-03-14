@@ -1,0 +1,23 @@
+%h1 Users
+%table{:class => "table table-striped"}
+  %thead
+    %tr
+      %th Name
+      %th
+        = t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email"))
+      %th Admin User
+      %th Actions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.full_name
+        %td= link_to user.email, user_path(user)
+        %td= user.admin ? "Yes" : "No"
+        %td
+          = link_to "Show", user_path(user), :class => 'btn btn-info'
+          -if current_user.admin? || current_user?(user)
+            = link_to "Edit", edit_user_path(user), :class => 'btn btn-warning'
+            = link_to "Delete", user_path(user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn btn-danger'
+
+-if current_user.admin?
+  = link_to "New", new_user_path, :class => 'btn btn-primary'

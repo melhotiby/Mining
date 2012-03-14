@@ -2,20 +2,18 @@
 %table{:class => "table table-striped"}
   %thead
     %tr
-      %th ID
       %th
         = t("activerecord.attributes.lead.title", :default => t("activerecord.labels.title", :default => "Title"))
-      %th Created at
+      %th Post Date
       %th Actions
   %tbody
     - @leads.each do |lead|
       %tr
-        %td= lead.id
         %td= link_to lead.title, lead_path(lead)
-        %td= lead.created_at
+        %td= lead.post_date.strftime("%B %d, %Y at %I:%M%p")
         %td
           = link_to "Show", lead_path(lead)
           = link_to "Edit", edit_lead_path(lead)
-          = link_to "Destroy", lead_path(lead), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
+          = link_to "Delete", lead_path(lead), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}"
 
-= link_to "New", new_lead_path, :class => 'btn btn-primary'
+= will_paginate @leads, :renderer => BootstrapPagination::Rails

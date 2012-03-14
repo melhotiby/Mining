@@ -26,8 +26,8 @@ class Craigslist
       if x.text =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     		reply = x.text
     	end
-    	value = x.attributes['href'].value
-    	if value != "" && post_id == false
+    	value = x.attributes['href'].value if x.attributes['href']
+    	if value && value != "" && post_id == false
     	 post_id = x.attributes['href'].value[/postingID=(\d+)/, 1]
     	end
     end

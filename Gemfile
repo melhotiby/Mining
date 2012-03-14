@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 # gem 'libcraigscrape', '0.8.4'
 gem "haml-rails"
-gem 'will_paginate', '3.0.3'
 gem "haml", "~> 3.1.4"
 gem 'mysql2'
 gem "craigler", "~> 1.3.2"
@@ -13,6 +12,9 @@ gem 'devise'
 gem "omniauth-facebook"
 gem "twitter-bootstrap-rails"
 gem 'country_select'
+gem 'will_paginate', '3.0.3'
+gem "will_paginate-bootstrap", "~> 0.0.1"
+gem "twitter-bootstrap-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

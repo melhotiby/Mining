@@ -1,0 +1,24 @@
+.span6
+  %label{:class => "label"}= t("activerecord.attributes.user.email", :default => t("activerecord.labels.email", :default => "Email")) + ":"
+  %p= @user.email
+  %label{:class => "label"}= t("activerecord.attributes.user.first_name", :default => t("activerecord.labels.first_name", :default => "First name")) + ":"
+  %p= @user.first_name
+  %label{:class => "label"}= t("activerecord.attributes.user.last_name", :default => t("activerecord.labels.last_name", :default => "Last name")) + ":"
+  %p= @user.last_name
+  %label{:class => "label"}= t("activerecord.attributes.user.admin", :default => t("activerecord.labels.admin", :default => "Admin")) + ":"
+  %p= @user.admin ? "Yes" : "No"
+  %label{:class => "label"}= t("activerecord.attributes.user.sign_in_count", :default => t("activerecord.labels.sign_in_count", :default => "Sign in count")) + ":"
+  %p= @user.sign_in_count
+  %label{:class => "label"}= t("activerecord.attributes.user.last_sign_in_at", :default => t("activerecord.labels.last_sign_in_at", :default => "Last sign in at")) + ":"
+  %p= @user.last_sign_in_at.strftime("%B %d, %Y at %I:%M%p") if @user.last_sign_in_at
+  %label{:class => "label"}= t("activerecord.attributes.user.current_sign_in_ip", :default => t("activerecord.labels.current_sign_in_ip", :default => "Current sign in ip")) + ":"
+  %p= @user.current_sign_in_ip
+  %label{:class => "label"}= t("activerecord.attributes.user.last_sign_in_ip", :default => t("activerecord.labels.last_sign_in_ip", :default => "Last sign in ip")) + ":"
+  %p= @user.last_sign_in_ip
+  %label{:class => "label"}= t("activerecord.attributes.user.created_at", :default => t("activerecord.labels.created_at", :default => "Original Create Date")) + ":"
+  %p= @user.created_at.strftime("%B %d, %Y at %I:%M%p")
+  -if current_user.admin? || current_user?(@user)
+    .form-actions
+      = link_to "Back", users_path, :class => 'btn'
+      = link_to "Edit", edit_user_path(@user), :class => 'btn'
+      = link_to "Delete", user_path(@user), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn'

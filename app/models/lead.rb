@@ -1,5 +1,6 @@
 class Lead < ActiveRecord::Base
   attr_accessible :title, :phone, :post_id, :state, :email, :post_date, :original_url
+  default_scope :order => 'created_at DESC'
   
   def self.create_records(name, state)
     count = 0

@@ -5,6 +5,9 @@
   State
   %label{:for => 'state'}= select_tag :state, options_for_select(us_states.unshift("Select your State"))
   %br
+  Search
+  %label{:for => 'choices'}= select_tag :choices, options_for_select(choices.unshift("Select your Search"))
+  %br
   = submit_tag
   
   #loading_wrapper

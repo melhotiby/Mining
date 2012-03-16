@@ -14,8 +14,8 @@ class Craigslist
     posts
   end
   
-  def self.search(query, state)
-    Craigler.find(query, :in => state.to_sym, :only => :jobs)
+  def self.search(query, state, choice)
+    Craigler.find(query, :in => state.to_sym, :only => choice.to_sym)
   end
   
   def self.reply_to(url)

@@ -2,9 +2,9 @@ class Lead < ActiveRecord::Base
   attr_accessible :title, :phone, :post_id, :state, :email, :post_date, :original_url
   default_scope :order => 'created_at DESC'
   
-  def self.create_records(name, state)
+  def self.create_records(name, state, choice)
     count = 0
-    records = Craigslist.search(name, state)
+    records = Craigslist.search(name, state, choice)
     records.each do |record|
       values = Craigslist.reply_to(record[:url])
       found_lead = Lead.find_by_post_id(values[1])

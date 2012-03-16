@@ -6,7 +6,7 @@ class LeadsController < ApplicationController
   end
   
   def lead_form_submit
-    count = Lead.create_records(params["name"], params["state"])
+    count = Lead.create_records(params["name"], params["state"], params["choices"])
     redirect_to leads_path, notice: "Successfully inserted #{count} new records" 
   end
 

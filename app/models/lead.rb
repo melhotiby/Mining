@@ -6,6 +6,7 @@ class Lead < ActiveRecord::Base
     count = 0
     records = Craigslist.search(name, state, choice)
     records.each do |record|
+      next if record[:published_at] < Time.now - 2.days
       values = Craigslist.reply_to(record[:url])
       found_lead = Lead.find_by_post_id(values[1])
       unless found_lead

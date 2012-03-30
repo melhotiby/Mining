@@ -2,11 +2,11 @@ class Lead < ActiveRecord::Base
   attr_accessible :title, :phone, :post_id, :state, :email, :post_date, :original_url
   default_scope :order => 'created_at DESC'
   
-  def self.create_records(name, state, choice)
+  def self.create_records(name, state, choice, previous_days)
     count = 0
     records = Craigslist.search(name, state, choice)
     records.each do |record|
-      next if record[:published_at] < Time.now - 2.days
+      next if record[:published_at] < Time.now - previous_days.to_i.days
       values = Craigslist.reply_to(record[:url])
       found_lead = Lead.find_by_post_id(values[1])
       unless found_lead

@@ -8,6 +8,9 @@
   Search
   %label{:for => 'choices'}= select_tag :choices, options_for_select(choices.unshift("Select your Search"))
   %br
+  How far back do you want to search?
+  %label{:for => 'previous_days'}= select_tag :previous_days, options_for_select(previous_days.unshift("Select how far back"))
+  %br
   = submit_tag
   
   #loading_wrapper

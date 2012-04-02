@@ -1,7 +1,10 @@
 %h1 Leads
-%table{:class => "table table-striped"}
+.span3{:style => "float: right; width: 110px;"}= link_to "Export CSV", root_path, :class => 'btn btn-primary export_csv'
+
+%table{:class => "table table-striped lead_export"}
   %thead
     %tr
+      %th Export
       %th
         = t("activerecord.attributes.lead.title", :default => t("activerecord.labels.title", :default => "Title"))
       %th Post Date
@@ -9,6 +12,8 @@
   %tbody
     - @leads.each do |lead|
       %tr
+        %td
+          %input{:type =>"checkbox", :value =>"#{lead.id}"}
         %td= link_to lead.title, lead_path(lead)
         %td= lead.post_date.strftime("%B %d, %Y at %I:%M%p")
         %td

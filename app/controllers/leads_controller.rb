@@ -9,6 +9,13 @@ class LeadsController < ApplicationController
     count = Lead.create_records(params["name"], params["state"], params["choices"], params["previous_days"])
     redirect_to leads_path, notice: "Successfully inserted #{count} new records" 
   end
+  
+  def export
+    @leads = Lead.find(params[:ids].split(","))
+    respond_to do |format|
+        format.csv { render :csv => @leads }
+    end
+  end
 
   def show
     @lead = Lead.find(params[:id])

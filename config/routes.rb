@@ -4,6 +4,7 @@ Mining::Application.routes.draw do
 
   resources :leads
   match '/lead_form' => 'leads#lead_form'
+  match '/export' => 'leads#export'
   post '/lead_form_submit' => 'leads#lead_form_submit'
   root :to => 'leads#lead_form'
 

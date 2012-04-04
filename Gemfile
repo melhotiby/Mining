@@ -15,6 +15,7 @@ gem 'country_select'
 gem 'will_paginate', '3.0.3'
 gem "will_paginate-bootstrap", "~> 0.0.1"
 gem "twitter-bootstrap-rails"
+gem 'thinking-sphinx', '2.0.10'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

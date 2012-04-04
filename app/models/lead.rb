@@ -16,5 +16,12 @@ class Lead < ActiveRecord::Base
     end
     count
   end
+  
+  
+  define_index do
+    indexes title, :sortable => true
+    indexes phone
+    has created_at, updated_at
+  end
     
 end
